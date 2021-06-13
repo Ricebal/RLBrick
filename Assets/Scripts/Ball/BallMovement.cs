@@ -97,18 +97,40 @@ public class BallMovement : MonoBehaviour
     {
         if (other.transform.tag == "Player")
         {
-            if (!m_leftPaddle)
-                return;
+            CollideWithPlayer(other);
+        }
 
-
-            float closestPoint = other.ClosestPoint(transform.position).x;
-            float pos = other.transform.position.x;
-            float hitPos = closestPoint - pos;
-            m_direction.y *= -1;
-            m_direction.x = hitPos;
+        if (other.transform.tag == "Brick")
+        {
+            CollideWithBrick(other);
         }
     }
 
+    private void CollideWithPlayer(Collider2D player)
+    {
+        if (!m_leftPaddle)
+            return;
+
+        float closestPoint = player.ClosestPoint(transform.position).x;
+        float pos = player.transform.position.x;
+        float hitPos = closestPoint - pos;
+        m_direction.y *= -1;
+        m_direction.x = hitPos;
+    }
+
+    private void CollideWithBrick(Collider2D brick)
+    {
+        BrickSides side = brick.GetComponent<BrickSide>().GetSide();
+        if (side == BrickSides.LEFT || side == BrickSides.RIGHT)
+        {
+            m_direction.x *= -1;
+        }
+
+        if (side == BrickSides.UP || side == BrickSides.DOWN)
+        {
+            m_direction.y *= -1;
+        }
+    }
     private void OnTriggerExit2D(Collider2D other)
     {
         if (other.transform.tag == "Player")

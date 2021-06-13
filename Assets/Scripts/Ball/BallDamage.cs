@@ -10,7 +10,7 @@ public class BallDamage : MonoBehaviour
     {
         if (other.tag == "Brick")
         {
-            other.GetComponent<Brick>().TakeDamage(m_damage);
+            other.GetComponentInParent<Brick>().TakeDamage(m_damage);
         }
     }
 }
