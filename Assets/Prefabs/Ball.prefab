@@ -132,7 +132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_controller: {fileID: 6335837602675548263}
-  m_speed: 5
+  m_speed: 7
 --- !u!58 &6335837602675548267
 CircleCollider2D:
   m_ObjectHideFlags: 0

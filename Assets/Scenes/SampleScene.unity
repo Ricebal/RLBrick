@@ -275,10 +275,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6335837602675548256, guid: eed3b9850d0df6240ac27ee472296bda, type: 3}
-      propertyPath: m_speed
-      value: 7
-      objectReference: {fileID: 0}
     - target: {fileID: 6335837602675548257, guid: eed3b9850d0df6240ac27ee472296bda, type: 3}
       propertyPath: m_Name
       value: Ball
@@ -384,24 +380,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6991923795101728718, guid: ac3d32da50ee17340b6167a367fbf9d2, type: 3}
+      propertyPath: m_mainCamera
+      value: 
+      objectReference: {fileID: 519420031}
+    - target: {fileID: 6991923795101728718, guid: ac3d32da50ee17340b6167a367fbf9d2, type: 3}
+      propertyPath: m_playerPosition
+      value: 
+      objectReference: {fileID: 65770897}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac3d32da50ee17340b6167a367fbf9d2, type: 3}
---- !u!1 &6991923795101728717 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5146551578190696214, guid: ac3d32da50ee17340b6167a367fbf9d2, type: 3}
-  m_PrefabInstance: {fileID: 6991923795101728716}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &6991923795101728718
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6991923795101728717}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db4c914323f21934ca525c166d58b87c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_mainCamera: {fileID: 519420031}
-  m_playerPosition: {fileID: 65770897}
