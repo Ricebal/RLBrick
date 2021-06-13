@@ -13,9 +13,9 @@ public class CharacterController2D : MonoBehaviour
         m_rigidbody2D = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Move(Vector2 move)
     {
-        
+        Vector3 targetVelocity = new Vector2(move.x, move.y);
+        m_rigidbody2D.velocity = targetVelocity;
     }
 }
