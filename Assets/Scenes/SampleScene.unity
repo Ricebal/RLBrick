@@ -275,6 +275,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6335837602675548256, guid: eed3b9850d0df6240ac27ee472296bda, type: 3}
+      propertyPath: m_speed
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 6335837602675548257, guid: eed3b9850d0df6240ac27ee472296bda, type: 3}
       propertyPath: m_Name
       value: Ball

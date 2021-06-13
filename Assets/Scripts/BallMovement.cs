@@ -8,9 +8,9 @@ public class BallMovement : MonoBehaviour
     [SerializeField] private float m_speed;
     private Rigidbody2D m_rigidbody2D;
     private Vector2 m_direction;
-    private bool m_attached = true;
-    private bool m_shot = false;
-    private bool m_leftPaddle = false;
+    private bool m_attached;
+    private bool m_shot;
+    private bool m_leftPaddle;
     private float m_hMin;
     private float m_hMax;
     private float m_vMin;
@@ -22,14 +22,13 @@ public class BallMovement : MonoBehaviour
         m_rigidbody2D = GetComponent<Rigidbody2D>();
 
         Vector2 screenSizeHalved = GameController.ScreenSizeHalved();
-        m_hMin = -screenSizeHalved.x + transform.localScale.x;
-        m_hMax = screenSizeHalved.x - transform.localScale.x;
+        m_hMin = -screenSizeHalved.x + (transform.localScale.x / 2);
+        m_hMax = screenSizeHalved.x - (transform.localScale.x / 2);
         m_vMin = -screenSizeHalved.y + transform.localScale.y;
         m_vMax = screenSizeHalved.y - transform.localScale.y;
 
         m_playerPosition = GameController.PlayerPosition();
-
-        m_direction = RandomDirection();
+        ResetBall();
     }
 
     private void Update()
@@ -44,12 +43,6 @@ public class BallMovement : MonoBehaviour
     {
         if (m_shot)
         {
-            m_direction = RandomDirection();
-            Debug.Log(RandomDirection());
-            Debug.Log(RandomDirection());
-            Debug.Log(RandomDirection());
-            Debug.Log(RandomDirection());
-            Debug.Log(RandomDirection());
             m_shot = false;
             m_attached = false;
         }
@@ -83,9 +76,8 @@ public class BallMovement : MonoBehaviour
 
     private void ResetBall()
     {
-        Debug.Log("lost");
         m_rigidbody2D.velocity = Vector2.zero;
-
+        m_direction = RandomDirection();
         m_attached = true;
         m_shot = false;
         m_leftPaddle = false;
