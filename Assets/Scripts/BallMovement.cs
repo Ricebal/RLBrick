@@ -28,6 +28,7 @@ public class BallMovement : MonoBehaviour
         if (transform.position.y < m_vMin)
         {
             Debug.Log("Lost");
+            transform.position = Vector3.zero;
             return;
         }
         if (transform.position.x < m_hMin || transform.position.x > m_hMax)
