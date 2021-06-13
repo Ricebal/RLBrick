@@ -19,6 +19,7 @@ public class BallMovement : MonoBehaviour
 
     private void Start()
     {
+        // Set initial variables and screen boundaries
         m_rigidbody2D = GetComponent<Rigidbody2D>();
 
         Vector2 screenSizeHalved = GameController.ScreenSizeHalved();
@@ -33,6 +34,7 @@ public class BallMovement : MonoBehaviour
 
     private void Update()
     {
+        // Shoot the ball if the shoot button is pressed and the ball is attached to the paddle
         if (Input.GetButtonDown("Shoot") && m_attached)
         {
             m_shot = true;
@@ -41,12 +43,14 @@ public class BallMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        // If the player shoots unattach the ball from the paddle
         if (m_shot)
         {
             m_shot = false;
             m_attached = false;
         }
 
+        // If the ball is attached to the paddle follow the movement of the paddle
         if (m_attached && !m_leftPaddle)
         {
             transform.position = new Vector3(m_playerPosition.position.x, m_playerPosition.position.y + transform.localScale.y, m_playerPosition.position.z);
@@ -54,6 +58,7 @@ public class BallMovement : MonoBehaviour
             return;
         }
 
+        // Reset ball when it goes off the bottom of the screen
         if (transform.position.y < m_vMin)
         {
             ResetBall();
@@ -61,11 +66,13 @@ public class BallMovement : MonoBehaviour
             return;
         }
 
+        // Bounce of the vertical walls
         if (transform.position.x < m_hMin || transform.position.x > m_hMax)
         {
             m_direction.x *= -1;
         }
 
+        // Bounce off the ceiling
         if (transform.position.y > m_vMax)
         {
             m_direction.y *= -1;
@@ -74,6 +81,7 @@ public class BallMovement : MonoBehaviour
         m_controller.Move(m_direction * m_speed);
     }
 
+    // Reset the velocity and generate a new random direction for the next shot
     private void ResetBall()
     {
         m_rigidbody2D.velocity = Vector2.zero;
@@ -84,7 +92,6 @@ public class BallMovement : MonoBehaviour
     }
 
     private Vector2 RandomDirection() => new Vector2((float)Random.Range(-100, 101) / 100, 1);
-
 
     private void OnTriggerEnter2D(Collider2D other)
     {

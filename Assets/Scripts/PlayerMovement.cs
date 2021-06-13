@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
+        // Set initial variables and screen boundaries
         m_rigidbody2D = GetComponent<Rigidbody2D>();
         Vector2 screenSizeHalved = GameController.ScreenSizeHalved();
         m_hMin = -screenSizeHalved.x + (transform.localScale.x / 2);
@@ -25,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        // Get movement inputs and limit moving out of the screen
         m_desiredMove.x = Input.GetAxisRaw("Horizontal") * m_hSpeed;
         if (m_touchLeft && m_desiredMove.x > 0)
         {
@@ -41,6 +43,7 @@ public class PlayerMovement : MonoBehaviour
     {
         m_controller.Move(m_desiredMove);
 
+        // Prevent the paddle from going off the screen
         if (transform.position.x < m_hMin || m_touchLeft)
         {
             m_touchLeft = true;
