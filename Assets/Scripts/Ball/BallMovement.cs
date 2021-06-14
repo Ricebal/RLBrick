@@ -120,7 +120,12 @@ public class BallMovement : MonoBehaviour
 
     private void CollideWithBrick(Collider2D brick)
     {
-        BrickSides side = brick.GetComponent<BrickSide>().GetSide();
+        BrickSide brickSide = brick.GetComponent<BrickSide>();
+
+        if (brickSide.IsDisabled())
+            return;
+
+        BrickSides side = brickSide.GetSide();
         if (side == BrickSides.LEFT || side == BrickSides.RIGHT)
         {
             m_direction.x *= -1;
@@ -130,12 +135,18 @@ public class BallMovement : MonoBehaviour
         {
             m_direction.y *= -1;
         }
+        brickSide.Touch();
     }
     private void OnTriggerExit2D(Collider2D other)
     {
         if (other.transform.tag == "Player")
         {
             m_leftPaddle = true;
+        }
+
+        if (other.transform.tag == "Brick")
+        {
+            other.GetComponent<BrickSide>().Untouch();
         }
     }
 }
