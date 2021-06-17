@@ -60,6 +60,7 @@ public class BallMovement : MonoBehaviour
         // Reset ball when it goes off the bottom of the screen
         if (transform.position.y < m_vMin)
         {
+            UIManager.ShowGameOverScreen(true);
             ResetBall();
 
             return;
