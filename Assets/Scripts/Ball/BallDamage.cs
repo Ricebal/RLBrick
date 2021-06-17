@@ -6,11 +6,11 @@ public class BallDamage : MonoBehaviour
 {
     [SerializeField] private float m_damage = 50f;
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.tag == "Brick")
+        if (other.transform.tag == "Brick")
         {
-            other.GetComponentInParent<Brick>().TakeDamage(m_damage);
+            other.transform.GetComponent<Brick>().TakeDamage(m_damage);
         }
     }
 }
