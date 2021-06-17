@@ -20,13 +20,13 @@ public class BallMovement : MonoBehaviour
         // Set initial variables and screen boundaries
         m_rigidbody2D = GetComponent<Rigidbody2D>();
 
-        Vector2 screenSizeHalved = GameController.ScreenSizeHalved();
+        Vector2 screenSizeHalved = GameManager.ScreenSizeHalved();
         m_hMin = -screenSizeHalved.x + (transform.localScale.x / 2);
         m_hMax = screenSizeHalved.x - (transform.localScale.x / 2);
         m_vMin = -screenSizeHalved.y + transform.localScale.y;
         m_vMax = screenSizeHalved.y - transform.localScale.y;
 
-        m_playerPosition = GameController.PlayerPosition();
+        m_playerPosition = GameManager.PlayerPosition();
         ResetBall();
     }
 

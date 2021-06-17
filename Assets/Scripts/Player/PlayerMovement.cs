@@ -19,14 +19,14 @@ public class PlayerMovement : MonoBehaviour
     {
         // Set initial variables and screen boundaries
         m_rigidbody2D = GetComponent<Rigidbody2D>();
-        Vector2 screenSizeHalved = GameController.ScreenSizeHalved();
+        Vector2 screenSizeHalved = GameManager.ScreenSizeHalved();
         m_hMin = -screenSizeHalved.x + (transform.localScale.x / 2);
         m_hMax = screenSizeHalved.x - (transform.localScale.x / 2);
     }
 
     private void Update()
     {
-        if (!GameController.CanControl())
+        if (!GameManager.CanControl())
             return;
 
         // Get movement inputs and limit moving out of the screen
@@ -44,7 +44,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!GameController.CanControl())
+        if (!GameManager.CanControl())
         {
             m_rigidbody2D.velocity = Vector2.zero;
             return;

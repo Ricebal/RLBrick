@@ -5,6 +5,12 @@ using UnityEngine;
 public class Brick : MonoBehaviour
 {
     [SerializeField] private float m_health = 100f;
+    [SerializeField] private float m_baseCoinValue = 10f;
+
+    private void Start()
+    {
+        BrickManager.AddBrick(this);
+    }
 
     public void TakeDamage(float amount)
     {
@@ -15,6 +21,8 @@ public class Brick : MonoBehaviour
 
     private void Break()
     {
+        ScoreManager.AddCoins(m_baseCoinValue);
+        BrickManager.RemoveBrick(this);
         Destroy(this.gameObject);
     }
 }

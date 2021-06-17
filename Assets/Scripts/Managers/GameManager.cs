@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class GameController : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
-    public static GameController Singleton;
+    public static GameManager Singleton;
 
     [SerializeField] private Camera m_mainCamera = null;
     [SerializeField] private Transform m_playerPosition = null;
@@ -49,5 +49,10 @@ public class GameController : MonoBehaviour
     public static bool CanControl()
     {
         return Singleton.m_canControl;
+    }
+
+    public static void EndLevel()
+    {
+        UIManager.ShowShop(true);
     }
 }
