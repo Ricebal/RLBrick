@@ -10,6 +10,8 @@ public class GameController : MonoBehaviour
     [SerializeField] private Camera m_mainCamera = null;
     [SerializeField] private Transform m_playerPosition = null;
 
+    private bool m_canControl = true;
+
     private void Awake()
     {
         InitializeSingleton();
@@ -37,5 +39,15 @@ public class GameController : MonoBehaviour
     public static Transform PlayerPosition()
     {
         return Singleton.m_playerPosition;
+    }
+
+    public static void ChangeControlState(bool enabled)
+    {
+        Singleton.m_canControl = enabled;
+    }
+
+    public static bool CanControl()
+    {
+        return Singleton.m_canControl;
     }
 }

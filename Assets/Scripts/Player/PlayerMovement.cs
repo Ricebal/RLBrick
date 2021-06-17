@@ -26,6 +26,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        if (!GameController.CanControl())
+            return;
+
         // Get movement inputs and limit moving out of the screen
         m_desiredMove.x = Input.GetAxisRaw("Horizontal") * m_hSpeed;
         if (m_touchLeft && m_desiredMove.x > 0)
@@ -41,6 +44,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!GameController.CanControl())
+        {
+            m_rigidbody2D.velocity = Vector2.zero;
+            return;
+        }
+
         m_controller.Move(m_desiredMove);
 
         // Prevent the paddle from going off the screen
